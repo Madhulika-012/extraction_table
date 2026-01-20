@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,11 +17,55 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f5f5;
+  /* Force scrolling to happen inside the app (so we can control scrollbars) */
+  overflow: hidden !important;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+}
+
+/* Scrollbars: invisible by default, visible on hover (Chrome/Edge + Firefox) */
+.scrollbar-hover {
+  /* Firefox */
+  scrollbar-width: none;
+}
+
+.scrollbar-hover:hover {
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 114, 128, 0.75) transparent; /* thumb / track */
+}
+
+/* Chrome / Edge / Safari */
+.scrollbar-hover::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrollbar-hover::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-hover::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 999px;
+  border: 2px solid transparent; /* creates padding around thumb */
+  background-clip: content-box;
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(107, 114, 128, 0.75);
+}
+
+.scrollbar-hover:hover::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(75, 85, 99, 0.9);
 }
 
 /* Resizable column styles */

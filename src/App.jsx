@@ -1,6 +1,7 @@
 import React from 'react'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import SLExtractionTable from './components/SLExtractionTable'
+import HoverScrollbars from './components/HoverScrollbars'
 
 const theme = createTheme({
   palette: {
@@ -18,7 +19,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <SLExtractionTable />
+      <HoverScrollbars maxHeight="100%" sx={{ height: '100%' }}>
+        <SLExtractionTable />
+      </HoverScrollbars>
     </ThemeProvider>
   )
 }

@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react'
-import * as XLSX from 'xlsx'
+import * as XLSX from 'xlsx-js-style'
 import {
   Box,
   Paper,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
   Checkbox,
@@ -33,6 +32,7 @@ import {
   Download as DownloadIcon,
   Close as CloseIcon,
 } from '@mui/icons-material'
+import HoverScrollbars from './HoverScrollbars'
 
 const columns = [
   { id: 'sNo', label: 'Sno', minWidth: 70, defaultWidth: 80 },
@@ -507,7 +507,7 @@ function SLExtractionTable({ rows: rowsProp, aiInsights: aiInsightsProp, referen
         }}
       >
         <Box sx={{ p: 2.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 1 }}>
-          <Typography variant="h5" component="h1">
+          <Typography variant="h5" component="h1" sx={{ fontWeight: 500 }}>
             Service Level Extractions
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -567,13 +567,10 @@ function SLExtractionTable({ rows: rowsProp, aiInsights: aiInsightsProp, referen
           </Box>
         )}
 
-        <TableContainer
+        <HoverScrollbars
+          maxHeight={600}
           sx={{
-            maxHeight: 600,
-            overflow: 'auto',
-            position: 'relative',
             borderTop: '1px solid #e5e7eb',
-            pr: 0,
           }}
         >
           <Table
@@ -760,7 +757,7 @@ function SLExtractionTable({ rows: rowsProp, aiInsights: aiInsightsProp, referen
               })}
             </TableBody>
           </Table>
-        </TableContainer>
+        </HoverScrollbars>
         {showPagination && (
           <TablePagination
             component="div"
@@ -793,7 +790,7 @@ function SLExtractionTable({ rows: rowsProp, aiInsights: aiInsightsProp, referen
       {/* AI Insights and References Section */}
       <Box sx={{ display: 'flex', gap: 3, mb: 3, alignItems: 'stretch' }}>
         <Paper elevation={2} sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column', borderRadius: 4 }}>
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 500 }}>
             AI Insights
           </Typography>
           <Box component="ul" sx={{ pl: 3, m: 0, flex: 1 }}>
@@ -811,7 +808,7 @@ function SLExtractionTable({ rows: rowsProp, aiInsights: aiInsightsProp, referen
         </Paper>
 
         <Paper elevation={2} sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column', borderRadius: 4 }}>
-          <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 500 }}>
             References
           </Typography>
           <Box sx={{ flex: 1 }}>
